@@ -27,18 +27,18 @@ public class GestaoCTG {
 
     private static void mostrarMenu() {
         System.out.println("Menu:");
-        System.out.println("1. Cadastrar Sócio");
+        System.out.println("1. Cadastrar SÃ³cio");
         System.out.println("2. Registrar Mensalidade");
-        System.out.println("3. Listar Sócios");
+        System.out.println("3. Listar SÃ³cios");
         System.out.println("4. Listar Mensalidades");
         System.out.println("5. Sair");
-        System.out.print("Escolha uma opção: ");
+        System.out.print("Escolha uma opÃ§Ã£o: ");
     }
 
     private static int obterOpcao() {
         while (!scanner.hasNextInt()) {
-            System.out.println("Opção inválida. Tente novamente.");
-            scanner.next(); // Descarta a entrada inválida
+            System.out.println("OpÃ§Ã£o invÃ¡lida. Tente novamente.");
+            scanner.next(); // Descarta a entrada invÃ¡lida
         }
         return scanner.nextInt();
     }
@@ -64,13 +64,13 @@ public class GestaoCTG {
                 System.exit(0);
                 break;
             default:
-                System.out.println("Opção inválida. Tente novamente.");
+                System.out.println("OpÃ§Ã£o invÃ¡lida. Tente novamente.");
                 break;
         }
     }
 
     private static void cadastrarSocio() {
-        System.out.print("Nome do sócio: ");
+        System.out.print("Nome do sÃ³cio: ");
         String nome = scanner.nextLine();
         System.out.print("Data de nascimento (dd/MM/yyyy): ");
         String dataNascimentoStr = scanner.nextLine();
@@ -78,7 +78,7 @@ public class GestaoCTG {
         String contato = scanner.nextLine();
 
         if (nome.isEmpty() || dataNascimentoStr.isEmpty() || contato.isEmpty()) {
-            System.out.println("Todos os campos são obrigatórios.");
+            System.out.println("Todos os campos sÃ£o obrigatÃ³rios.");
             return;
         }
 
@@ -87,20 +87,20 @@ public class GestaoCTG {
 
         Socio socio = new Socio(proximoIdSocio++, nome, dataNascimento, contato);
         socios.add(socio);
-        System.out.println("Sócio cadastrado com sucesso.");
+        System.out.println("SÃ³cio cadastrado com sucesso.");
     }
 
     private static LocalDate parseDate(String data) {
         try {
             return LocalDate.parse(data, dateFormatter);
         } catch (DateTimeParseException e) {
-            System.out.println("Data inválida. Use o formato dd/MM/yyyy.");
+            System.out.println("Data invÃ¡lida. Use o formato dd/MM/yyyy.");
             return null;
         }
     }
 
     private static void registrarMensalidade() {
-        System.out.print("ID do sócio: ");
+        System.out.print("ID do sÃ³cio: ");
         int idSocio = scanner.nextInt();
         scanner.nextLine(); // Consumir a quebra de linha
 
@@ -109,7 +109,7 @@ public class GestaoCTG {
                 .findFirst();
 
         if (socioOpt.isEmpty()) {
-            System.out.println("Sócio não encontrado.");
+            System.out.println("SÃ³cio nÃ£o encontrado.");
             return;
         }
 
@@ -133,9 +133,9 @@ public class GestaoCTG {
     }
 
     private static void listarSocios() {
-        System.out.println("Lista de Sócios:");
+        System.out.println("Lista de SÃ³cios:");
         if (socios.isEmpty()) {
-            System.out.println("Nenhum sócio cadastrado.");
+            System.out.println("Nenhum sÃ³cio cadastrado.");
         } else {
             for (Socio s : socios) {
                 System.out.println(s);
